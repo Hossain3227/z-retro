@@ -8,14 +8,115 @@
 
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://kit.fontawesome.com/2492c64ae0.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <header>
-
+    <header class="container mx-auto">
+        <div class="navbar bg-base-100">
+            <div class="navbar-start">
+              <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </div>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100  w-52">
+                  <li class=""><a>Home</a></li>
+                  <li><a>Post</a></li>
+                  <li><a>Add</a></li>
+                  <li><a>Flags</a></li>
+                </ul>
+              </div>
+              <a class="btn btn-ghost text-xl">Zid-retro</a>
+            </div>
+            <div class="navbar-center hidden lg:flex  navbar-end ml-[480px]">
+              <ul class="menu menu-horizontal px-1  space-x-4">
+                <li class=""><a class="border rounded-t-3xl rounded-b-3xl bg-[#12132d08] w-[50px] h-[50px] flex items-center justify-center"><i class="fa-solid fa-house text-[18px]"></i></a></li>
+                <li class=""><a class="border rounded-t-3xl rounded-b-3xl bg-[#12132d08] w-[50px] h-[50px] flex items-center justify-center"><i class="fa-solid fa-pen text-[18px]"></i></a></li>
+                <li class=""><a class="border rounded-t-3xl rounded-b-3xl bg-[#12132d08] w-[50px] h-[50px] flex items-center justify-center"><i class="fa-solid fa-address-book text-[18px]"></i></a></li>
+                <li class=""><a class="border rounded-t-3xl rounded-b-3xl bg-[#12132d08] w-[50px] h-[50px] flex items-center justify-center"><i class="fa-regular fa-flag text-[18px]"></i></a></li>
+              </ul>
+            </div>
+            <div class="navbar-end border">
+              <a class="btn  rounded-full bg-[#797dfc] text-white text-[20px]">Sign-in</a>
+            </div>
+          </div>
     </header>
 
-    <main>
+    <main class="container mx-auto">
+
+      <section>
+       
+        <div class="bg-[#12132d] bg-no-repeat bg-bottom bg-cover flex justify-around space-x-8 rounded-3xl" style="background-image: url(images/bgbanner.png); height: 550px; background-color:rgba(18, 19, 45)"> 
+
+          <!-- <div class="flex"> -->
+
+            <div class="flex flex-col items-center justify-center">
+              <h2 class="text-[64px] text-white ">Welcome to the <br> ReTro Forum</h2>
+              <p class="text-white text-[20px] my-4 w-[70%]">Share your favorite opinion and win and wp forum coffee mug!</p>
+  
+              <div class="flex relative w-[400px] h-[76px]">
+                <input type="text" placeholder="Search for anything" class="input input-bordered w-full max-w-xs rounded-2xl" />
+                <button class="btn absolute right-24 translate-x-4  bg-[#797DFC] text-white rounded-3xl">Button</button>
+              </div>
+            </div>
+
+
+            <div class="flex flex-col items-end justify-center">
+              <div class=" bg-white w-[370px] h-[220px]">
+                <table class="table">
+                  <!-- head -->
+                  <thead>
+                    
+                  </thead>
+                  <tbody class="text-[24px]">
+                    <!-- row 1 -->
+                    <tr>
+                      <th>Registered Users</th>
+                      <td>01</td>
+                    </tr>
+                    <tr>
+                      <th>Registered Users</th>
+                      <td>01</td>
+                    </tr>
+                    <tr>
+                      <th>Registered Users</th>
+                      <td>01</td>
+                    </tr>
+                    <tr>
+                      <th>Registered Users</th>
+                      <td>01</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          <!-- </div> -->
+
+          
+
+        </div>
+      </section>
+
+      <section class="my-10">
+       <div class="text-center mb-6">
+        <h2 class="text-3xl">Let’s Discuss</h2>
+        <p class="text-[18px]">Yes, you can run unit tests and view the results directly within the app. The integrated testing features allow for a streamlined .</p>
+       </div>
+
+       <div id="post-container" class="flex justify-between">
+        <div class="">
+        
+        </div>
+        
+        <!-- <div class="bg-[#12132D0D] w-1/4">
+          <div>
+            <h2>Tiltle</h2>
+            <p>mark as read</p>
+          </div>
+        </div> -->
+       </div>
+      </section>
 
     </main>
 
@@ -24,7 +125,7 @@
 
     </footer>
 
-    
-    
+
+  <script src="loaddata.js"></script>
 </body>
 </html>
