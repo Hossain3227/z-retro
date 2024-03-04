@@ -18,9 +18,15 @@ const displayPosts = allPosts =>{
     allPosts.forEach((post, index) =>{
         console.log(post);
         const postCard = document.createElement('div');
-        postCard.classList ='card card-side flex bg-[#797dfc1a] p-6 mb-4 rounded-2xl';
+        postCard.classList ='card card-side flex bg-[#797dfc1a] p-6 mb-4 rounded-2xl relative';
+
+        const circleColor = post.isActive?'green':'red';
+        const activeIndicator = `
+        <div class="absolute top-24 left-20 translate-x-2 -translate-y-1 mr-2 w-3 h-3 rounded-full bg-${circleColor}-500"></div>;
+        `
         postCard.innerHTML = `
-        <figure><img class="w-[72px] h-[72px]" src="${post.image}" /></figure>
+        
+        <figure><img class=" relative w-[72px] h-[72px]" src="${post.image}" />${activeIndicator}</figure>
           <div class="card-body">
             <div class="flex">
               <p>#${post.category}</p>
