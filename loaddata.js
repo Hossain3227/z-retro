@@ -1,5 +1,5 @@
 let allPosts;
-
+let readCount = 0;
 const loadData = async() =>{
     const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
     const data = await res.json();
@@ -18,7 +18,7 @@ const displayPosts = allPosts =>{
     allPosts.forEach((post, index) =>{
         console.log(post);
         const postCard = document.createElement('div');
-        postCard.classList ='card card-side flex';
+        postCard.classList ='card card-side flex bg-[#797dfc1a] p-6 mb-4 rounded-2xl';
         postCard.innerHTML = `
         <figure><img class="w-[72px] h-[72px]" src="${post.image}" /></figure>
           <div class="card-body">
@@ -27,7 +27,7 @@ const displayPosts = allPosts =>{
               <p>Author :${post.author.name}</p>
             </div>
             <h2 class="card-title">${post.title}</h2>
-            <p>${post.description}</p>
+            <p class="text-[#12132D99]">${post.description}</p>
             <div class="card-actions justify-between">
               <div class="space-x-2">
                 <i class="fa-regular fa-message"><span class="ml-2">${post.comment_count}</span></i>
@@ -52,7 +52,7 @@ const displayPosts = allPosts =>{
     infoContainer.innerHTML=`
         <div class="flex justify-between p-4">
             <h2 class="text-[20px]">Tiltle</h2>
-            <p class="text-[16px] text-[#12132D99]">Mark as read</p>
+            <p class="text-[16px] text-[#12132D99]">Mark as read <span id="read-count">(0)</span></p>
           </div>
     `;
 
@@ -110,16 +110,24 @@ const addbuttonClick = (index) =>{
 
   table.style.backgroundColor='white';
   table.style.marginBottom='20px';
-  tdTitle.style.paddingRight='20px';
+  tdTitle.style.paddingRight='5px';
   tdTitle.style.paddingTop='16px';
   tdTitle.style.paddingBottom='16px';
   tdTitle.style.paddingLeft='15px';
+  tdTitle.style.width='50%';
+
+  tdViewCount.style.paddingRight='12px';
+  tdViewCount.style.whiteSpace='nowrap';
+  tdViewCount.style.textAlign='right';
   table.style.fontSize='16px';
 
 
 
   // infoContainer.innerHTML = '';
   infoContainer.appendChild(table);
+
+  readCount++;
+  document.getElementById('read-count').textContent=readCount;
 
 
 }
@@ -128,4 +136,43 @@ const addbuttonClick = (index) =>{
 loadData();
 
 
+const loadallPostData = async() =>{
+  const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts');
+  const data = await res.json();
+  const alllatestPost = data
+  console.log(alllatestPost);
+  displayAllPosts(alllatestPost);
+}
+
+const displayAllPosts = alllatestPost =>{
+
+  const postlatestContainer = document.getElementById('lpost-container');
+
+
+  alllatestPost.forEach(latestPost =>{
+    console.log(latestPost);
+    const postlatestCard = document.createElement('div');
+    postlatestCard.classList ='card w-96 bg-base-100 shadow-xl p-6';
+    postlatestCard.innerHTML=`
+            <figure><img src="${latestPost.cover_image}" alt="Shoes" /></figure>
+            <div class="card-body">
+              <p class=""><i class="fa-regular fa-calendar-days"><span class="ml-2">${latestPost.author.posted_date}</span></i></p>
+              <h2 class="card-title">${latestPost.title}</h2>
+              <p>${latestPost.description
+              }</p>
+              <div class="card-actions flex">
+                <img class="w-[44px] h-[44px] rounded-full" src="${latestPost.profile_image}" alt="">
+                <div class="flex flex-col ml-2">
+                  <h2>${latestPost.author.name}</h2>
+                  <p>${latestPost.author.designation}</p>
+                </div>
+              </div>
+            </div>
+    `;
+
+    postlatestContainer.appendChild(postlatestCard);
+  })
+}
+
+loadallPostData();
 // addbuttonClick();
