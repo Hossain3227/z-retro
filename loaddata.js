@@ -65,6 +65,75 @@ const displayPosts = allPosts =>{
     postContainer.appendChild(infoContainer);
 }
 
+// filtered post code
+
+// document.getElementById('searchButton'),addEventListener('click',function(){
+//   const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+//    if(searchQuery.trim()===''){
+//     displayPosts(allPosts);
+//     return;
+//    }
+//   const fPost= allPosts.filter(post=>post.category.toLowerCase() === searchQuery);
+//   displayFilteredPosts(fPost);
+// })
+// const displayFilteredPosts = allPosts =>{
+//   const postContainer = document.getElementById('post-container');
+//   postContainer.innerHTML='';
+//   const postnewCardcontainer = document.createElement('div');
+//   postnewCardcontainer.classList ='flex flex-col w-2/4';
+
+
+//   allPosts.forEach((post, index) =>{
+//       console.log(post);
+//       const postCard = document.createElement('div');
+//       postCard.classList ='card card-side flex bg-[#797dfc1a] p-6 mb-4 rounded-2xl relative';
+
+//       const circleColor = post.isActive?'green':'red';
+//       const activeIndicator = `
+//       <div class="absolute top-24 left-20 translate-x-2 -translate-y-1 mr-2 w-3 h-3 rounded-full bg-${circleColor}-500"></div>;
+//       `
+//       postCard.innerHTML = `
+      
+//       <figure><img class=" relative w-[72px] h-[72px]" src="${post.image}" />${activeIndicator}</figure>
+//         <div class="card-body">
+//           <div class="flex">
+//             <p>#${post.category}</p>
+//             <p>Author :${post.author.name}</p>
+//           </div>
+//           <h2 class="card-title">${post.title}</h2>
+//           <p class="text-[#12132D99]">${post.description}</p>
+//           <div class="card-actions justify-between">
+//             <div class="space-x-2">
+//               <i class="fa-regular fa-message"><span class="ml-2">${post.comment_count}</span></i>
+//               <i class="fa-regular fa-eye"><span class="ml-2">${post.view_count}</span></i>
+//               <i class="fa-regular fa-clock"><span class="ml-2">${post.posted_time} min</span></i>
+//             </div>
+//             <button onclick="addbuttonClick(this.getAttribute('data-index'))" data-index="${index}" id="btn-add" class="btn bg-green-500 text-white text-[18px]"><i class="fa-regular fa-envelope-open"></i></button>
+//           </div>
+//         </div>
+//       `;
+
+//       postnewCardcontainer.appendChild(postCard);
+//   });
+
+//   postContainer.appendChild(postnewCardcontainer);
+
+
+//   const infoContainer = document.createElement('div');
+//   infoContainer.id = 'info-container';
+//   infoContainer.classList = 'bg-[#12132D0D] w-1/4 p-4';
+
+//   infoContainer.innerHTML=`
+//       <div class="flex justify-between p-4">
+//           <h2 class="text-[20px]">Tiltle</h2>
+//           <p class="text-[16px] text-[#12132D99]">Mark as read <span id="read-count">(0)</span></p>
+//         </div>
+//   `;
+
+//   postContainer.appendChild(infoContainer);
+// }
+
+
 
 // function addbuttonClick(){
 //   const buttonAdd = document.getElementById('btn-add');
@@ -162,7 +231,7 @@ const displayAllPosts = alllatestPost =>{
     postlatestCard.innerHTML=`
             <figure><img src="${latestPost.cover_image}" alt="Shoes" /></figure>
             <div class="card-body">
-              <p class=""><i class="fa-regular fa-calendar-days"><span class="ml-2">${latestPost.author.posted_date}</span></i></p>
+              <p class=""><i class="fa-regular fa-calendar-days"><span class="ml-2">${latestPost.author.posted_date || 'Unknown'}</span></i></p>
               <h2 class="card-title">${latestPost.title}</h2>
               <p>${latestPost.description
               }</p>
@@ -170,7 +239,7 @@ const displayAllPosts = alllatestPost =>{
                 <img class="w-[44px] h-[44px] rounded-full" src="${latestPost.profile_image}" alt="">
                 <div class="flex flex-col ml-2">
                   <h2>${latestPost.author.name}</h2>
-                  <p>${latestPost.author.designation}</p>
+                  <p>${latestPost.author.designation || 'Unknown'}</p>
                 </div>
               </div>
             </div>
